@@ -1,0 +1,56 @@
+.app {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+}
+
+.movieContainer {
+  width: 70%;
+  border: 1px solid black;
+  margin: 40px auto;
+  padding: 0;
+  list-style: none;
+}
+
+.list {
+  width: 90%;
+  border-bottom: 1px solid black;
+  margin: 0 auto;
+}
+
+.list:last-child {
+  border-bottom: none;
+}
+
+.formWrapper {
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleInput {
+  width: 78%;
+  padding: 5px;
+}
+
+.textArea {
+  width: 80%;
+  margin-top: 20px;
+}
+
+.button {
+  background-color: tomato;
+  border: none;
+  border-radius: 10px;
+  font-size: 28px;
+  margin: 30px 0;
+  padding: 10px 30px;
+}
