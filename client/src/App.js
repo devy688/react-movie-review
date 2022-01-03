@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import List from "./components/List";
+import axios from "axios";
 import "./App.css";
 
 function App() {
@@ -22,11 +23,24 @@ function App() {
     });
   };
 
+  // const sendData = () => {
+
+  // }
+
   const addMovieReview = (data) => {
     setMovieContent({
       ...movieContent,
       content: data,
     });
+  };
+
+  const submitReview = () => {
+    axios
+      .post("/api/insert", {
+        title: movieContent.title,
+        content: movieContent.content,
+      })
+      .then(() => alert("등록 완료!"));
   };
 
   useEffect(() => {
@@ -64,21 +78,14 @@ function App() {
               });
             }}
             onChange={(editor) => {
-              addMovieReview(editor.getData());
+              // console.log(editor);
+              const data = editor.getData();
               setContentArea(editor);
+              addMovieReview(data);
             }}
           />
         </div>
-        <button
-          onClick={(event) => {
-            event.preventDefault();
-
-            // push함수는 원본배열을 변화시키므로 concat을 사용한다
-            setViewContent(viewContent.concat({ ...movieContent }));
-            titleRef && (titleRef.current.value = "");
-          }}
-          className="button"
-        >
+        <button onClick={submitReview} className="button">
           Add
         </button>
       </form>
